@@ -1,3 +1,3 @@
 #Destination_Ratr_Backend
 
-live site: https://destination-ratr.netlify.app/
+Live site for backend: https://destination-ratr-backend.herokuapp.com/destination
