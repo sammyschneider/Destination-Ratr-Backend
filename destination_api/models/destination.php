@@ -1,6 +1,24 @@
 <?php
 //CONNECT TO DATABASE
-$dbconn = pg_connect("host=localhost dbname=destination_ratr");
+
+$dbconn = null;
+if (getenv('postgres://djpqfkpeqkzibu:4ae9479cc42f4c4a5e36e241b921f7e26d8a428504e959a4214a0f76de27e634@ec2-3-213-102-175.compute-1.amazonaws.com:5432/d1fjhg32un52ms')) {
+  $connectionConfig = parse_url(getenv('postgres://djpqfkpeqkzibu:4ae9479cc42f4c4a5e36e241b921f7e26d8a428504e959a4214a0f76de27e634@ec2-3-213-102-175.compute-1.amazonaws.com:5432/d1fjhg32un52ms'));
+  $host = $connectionConfig['host'];
+  $user = $connectionConfig['user'];
+  $password = $connectionConfig['pass'];
+  $port = $connectionConfig['port'];
+  $dbname = trim($connectionConfig['path'], '/');
+  $dbconn = pg_connect(
+    "host=" . $host . " " .
+      "user=" . $user . " " .
+      "password=" . $password . " " .
+      "port=" . $port . " " .
+      "dbname=" . $dbname
+  );
+} else {
+  $dbconn = pg_connect("host=localhost dbname=destination_ratr");
+}
 
 class Destination {
     public $id;
