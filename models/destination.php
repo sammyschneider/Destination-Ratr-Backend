@@ -2,8 +2,8 @@
 //CONNECT TO DATABASE
 
 $dbconn = null;
-if (getenv('postgres://djpqfkpeqkzibu:4ae9479cc42f4c4a5e36e241b921f7e26d8a428504e959a4214a0f76de27e634@ec2-3-213-102-175.compute-1.amazonaws.com:5432/d1fjhg32un52ms')) {
-  $connectionConfig = parse_url(getenv('postgres://djpqfkpeqkzibu:4ae9479cc42f4c4a5e36e241b921f7e26d8a428504e959a4214a0f76de27e634@ec2-3-213-102-175.compute-1.amazonaws.com:5432/d1fjhg32un52ms'));
+if (getenv('DATABASE_URL')) {
+  $connectionConfig = parse_url(getenv('DATABASE_URL'));
   $host = $connectionConfig['host'];
   $user = $connectionConfig['user'];
   $password = $connectionConfig['pass'];
